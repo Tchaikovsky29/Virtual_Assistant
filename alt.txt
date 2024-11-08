@@ -1,0 +1,51 @@
+import whisper
+from elevenlabs import generate, stream
+
+Use this in case you want to use whisper instead of speech recognition, though whisper is a lot slower
+model = whisper.load_model("base")
+# text = model.transcribe("RA\input.wav")['text']
+    # return text
+
+Use this function if you want to use elevenlabs in place of pyt2s
+def generate_audio(text):
+    audio_stream = generate(
+        api_key = os.getenv("ELEVENLABS_API_KEY"),
+        text = text,
+        voice = "Lily",
+        stream = True
+    )
+    stream(audio_stream)
+
+Use this in case you want to have it work like the original prompt
+'''
+Thought: I now know the final answer, and should 
+Final Answer: the final answer to the original input question. Pass the output of this to Human_input tool, and let the user decide when to end the conversation.
+Go back to the top, ie. Question after this, and repeat the cycle.
+
+Make sure that you use multiple tools if you have to, sequentially, and do not just return the output after using the first tool in this case.
+Begin!
+'''
+
+Use this in case you want to use pyttsx3 in place of pyt2s
+# import pyttsx3
+# engine = pyttsx3.init()
+# voices = engine.getProperty("voices")
+# engine.setProperty('voice', voices[1].id)
+# engine.setProperty('rate', 175)
+# def speak_text(text):
+#     engine.say(text)
+#     engine.runAndWait()
+
+from pydub import AudioSegment
+from pydub.playback import play
+import io
+
+Use this in case you want to use pydub for audio playback instead of rpaudio
+# def speak_text(text):
+#     #Salli sounds fine too, or Joanna
+#     data = stream_elements.requestTTS(text, stream_elements.Voice.Amy.value)
+#     try:
+#         audio = AudioSegment.from_file(io.BytesIO(data),format= "mp3")
+#     except:
+#         audio = AudioSegment.from_file(io.BytesIO(data), format="mp4")
+#     play(audio)
