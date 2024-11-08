@@ -33,7 +33,7 @@ def listen():
     print()
     print("listening...")
     with sr.Microphone() as source:
-        filename = "RA/input.wav"
+        filename = "VA/input.wav"
         recognizer = sr.Recognizer()
         source.pause_threshold = 3
         audio = recognizer.listen(source, phrase_time_limit = None, timeout = 10)
@@ -49,13 +49,13 @@ def listen():
         print(e)
 
 def speak_text(text):
-    data = stream_elements.requestTTS(text, stream_elements.Voice.Salli.value)
+    data = stream_elements.requestTTS(text, stream_elements.Voice.Amy.value)
 
-    with open('RA/output.mp3', '+wb') as file:
+    with open('VA/output.mp3', '+wb') as file:
         file.write(data)
 
     time.sleep(0.2)
-    audio = AudioSink().load_audio("RA/output.mp3")
+    audio = AudioSink().load_audio("VA/output.mp3")
     audio.play()
 
     while audio.is_playing:
