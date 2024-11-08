@@ -7,14 +7,12 @@ pinecone_text
 sentence-transformers
 duckduckgo-search
 langchain-experimental
-speech-recognition
+SpeechRecognition
 pyttsx3
 pyaudio
 whisper
 ffmpeg-python
 elevenlabs==0.3.0b0
 rpaudio
-PIL
-io
+pillow
 pyt2s
-time
